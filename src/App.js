@@ -6,9 +6,17 @@ import request from "superagent";
 import api from "./dataStore/stubAPI"; // NEW
 import _ from "lodash";
 
+
+
 class App extends Component {
       state = { search: "", gender: "all" };
+  
 
+  handleChange = (type, value) => {
+        type === "name"
+        ? this.setState({ search: value })
+        : this.setState({ gender: value });
+    };
     componentDidMount() { 
         request.get("https://randomuser.me/api/?results=50").end((error, res) => {
         if (res) {
